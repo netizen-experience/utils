@@ -1,0 +1,19 @@
+{
+  "name": "@netizen/utils",
+  "version": "0.0.1",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netizen-experience/utils.git"
+  },
+  "author": "Netizen Experience",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/netizen-experience/utils/issues"
+  },
+  "homepage": "https://github.com/netizen-experience/utils#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
