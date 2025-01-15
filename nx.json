@@ -25,5 +25,17 @@
       }
     }
   ],
-  "defaultBase": "main"
+  "defaultBase": "main",
+  "targetDefaults": {
+    "@nx/js:tsc": {
+      "cache": false,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    }
+  },
+  "release": {
+    "version": {
+      "preVersionCommand": "npx nx run-many -t build"
+    }
+  }
 }
