@@ -1,12 +1,5 @@
 import { createLogger, transports } from "winston";
 
-const LOGGER_LEVEL = process.env["LOGGER_LEVEL"] ?? "info";
-
-const logger = createLogger({
-  level: LOGGER_LEVEL,
-  transports: [new transports.Console()],
-});
-
 /**
  * Represents the structured log entry object.
  */
@@ -89,34 +82,6 @@ interface Log {
   silly: (entry: LogEntry) => void;
 }
 
-function formatLog({ message, origin, session }: LogEntry): string {
-  return `[${session}] [${origin[0]}:${origin[1]}] ${message}`;
-}
-
-const logMethods = {
-  error: <Ex extends Error>(ex: Ex) => {
-    logger.error(ex);
-  },
-  warn: (entry: LogEntry) => {
-    logger.warn(formatLog(entry));
-  },
-  info: (entry: LogEntry) => {
-    logger.info(formatLog(entry));
-  },
-  http: (entry: LogEntry) => {
-    logger.http(formatLog(entry));
-  },
-  verbose: (entry: LogEntry) => {
-    logger.verbose(formatLog(entry));
-  },
-  debug: (entry: LogEntry) => {
-    logger.debug(formatLog(entry));
-  },
-  silly: (entry: LogEntry) => {
-    logger.silly(formatLog(entry));
-  },
-};
-
 /**
  * Logging function that can be called directly or used as an object for various log levels.
  *
@@ -132,21 +97,57 @@ const logMethods = {
  * log.error(new Error("message"));
  * log.debug({ message: "debug", session: "abcdef123456", origin: ["user", "userLookupFromIdentity"] });
  */
-export const log = new Proxy<Log>(
-  Object.assign(() => {}, logMethods), // eslint-disable-line @typescript-eslint/no-empty-function
-  {
-    apply: (target, _, argArray) => {
-      if (argArray.length === 1) {
-        target.info(argArray[0]);
-      } else {
-        throw new Error("Invalid number of arguments");
-      }
+export function initLogger(): Log {
+  const LOGGER_LEVEL = process.env["LOGGER_LEVEL"] ?? "info";
+  const logger = createLogger({
+    level: LOGGER_LEVEL,
+    transports: [new transports.Console()],
+  });
+
+  function formatLog({ message, origin, session }: LogEntry): string {
+    return `[${session}] [${origin[0]}:${origin[1]}] ${message}`;
+  }
+
+  const logMethods = {
+    error: <Ex extends Error>(ex: Ex) => {
+      logger.error(ex);
     },
-    get: (target, prop: keyof typeof logMethods) => {
-      if (prop in target) {
-        return target[prop];
-      }
-      return undefined;
+    warn: (entry: LogEntry) => {
+      logger.warn(formatLog(entry));
     },
-  },
-);
+    info: (entry: LogEntry) => {
+      logger.info(formatLog(entry));
+    },
+    http: (entry: LogEntry) => {
+      logger.http(formatLog(entry));
+    },
+    verbose: (entry: LogEntry) => {
+      logger.verbose(formatLog(entry));
+    },
+    debug: (entry: LogEntry) => {
+      logger.debug(formatLog(entry));
+    },
+    silly: (entry: LogEntry) => {
+      logger.silly(formatLog(entry));
+    },
+  };
+
+  return new Proxy<Log>(
+    Object.assign(() => {}, logMethods), // eslint-disable-line @typescript-eslint/no-empty-function
+    {
+      apply: (target, _, argArray) => {
+        if (argArray.length === 1) {
+          target.info(argArray[0]);
+        } else {
+          throw new Error("Invalid number of arguments");
+        }
+      },
+      get: (target, prop: keyof typeof logMethods) => {
+        if (prop in target) {
+          return target[prop];
+        }
+        return undefined;
+      },
+    },
+  );
+}
