@@ -83,18 +83,18 @@ interface Log {
 }
 
 /**
- * Logging function that can be called directly or used as an object for various log levels.
- *
- * @param {LogEntry} entry - The structured log entry with message details.
- * @returns {void}
+ * Initializes and return a logger instance that formats log entries and provides logging methods for different log levels.
+ * @returns {Log} A logging function that can be called directly or used as an object for various log levels.
  *
  * @example
+ * // Initialize the logger
+ * const log = initLogger();
+ *
  * // Default info log
  * log({ message: "info", session: "abcdef123456", origin: ["user", "getProfile"] });
  *
- * @example
- * // Specific log levels
- * log.error(new Error("message"));
+ * // Log at specific levels
+ * log.error(new Error("Error message"));
  * log.debug({ message: "debug", session: "abcdef123456", origin: ["user", "userLookupFromIdentity"] });
  */
 export function initLogger(): Log {
