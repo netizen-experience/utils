@@ -29,6 +29,7 @@
     "noUncheckedSideEffectImports": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
+      "@netizen/utils-aws": ["packages/utils-aws/src/index.ts"],
       "@netizen/utils-logger": ["packages/utils-logger/src/index.ts"]
     }
   }
