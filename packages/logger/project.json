@@ -1,7 +1,7 @@
 {
-  "name": "utils-logger",
+  "name": "logger",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/utils-logger/src",
+  "sourceRoot": "packages/logger/src",
   "projectType": "library",
   "release": {
     "version": {
@@ -17,10 +17,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/utils-logger",
-        "main": "packages/utils-logger/src/index.ts",
-        "tsConfig": "packages/utils-logger/tsconfig.lib.json",
-        "assets": ["packages/utils-logger/*.md"]
+        "outputPath": "dist/packages/logger",
+        "main": "packages/logger/src/index.ts",
+        "tsConfig": "packages/logger/tsconfig.lib.json",
+        "assets": ["packages/logger/*.md"]
       }
     },
     "nx-release-publish": {
