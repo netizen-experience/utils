@@ -1,4 +1,5 @@
 import { createLogger, transports } from "winston";
+import TransportStream from "winston-transport";
 
 /**
  * Represents the structured log entry object.
@@ -83,25 +84,29 @@ interface Log {
 }
 
 /**
- * Initializes and return a logger instance that formats log entries and provides logging methods for different log levels.
+ * Initializes and returns a logger instance that formats log entries and provides logging methods for different log levels.
+ * @param {TransportStream | TransportStream[]} [customTransports] - Optional custom transport or array of transports to be used by the logger.
  * @returns {Log} A logging function that can be called directly or used as an object for various log levels.
  *
  * @example
- * // Initialize the logger
- * const log = initLogger();
+ * // Initialize the logger with default console transport
+ * const defaultLog = initLogger();
+ *
+ * // Initialize the logger with custom transports
+ * const customLog = initLogger([new transports.Console(), new transports.File({ filename: 'combined.log' })]);
  *
  * // Default info log
- * log({ message: "info", session: "abcdef123456", origin: ["user", "getProfile"] });
+ * defaultLog({ message: "info", session: "abcdef123456", origin: ["user", "getProfile"] });
  *
  * // Log at specific levels
- * log.error(new Error("Error message"));
- * log.debug({ message: "debug", session: "abcdef123456", origin: ["user", "userLookupFromIdentity"] });
+ * defaultLog.error(new Error("Error message"));
+ * defaultLog.debug({ message: "debug", session: "abcdef123456", origin: ["user", "userLookupFromIdentity"] });
  */
-export function initLogger(): Log {
+export function initLogger(customTransports?: TransportStream | TransportStream[]): Log {
   const LOGGER_LEVEL = process.env["LOGGER_LEVEL"] ?? "info";
   const logger = createLogger({
     level: LOGGER_LEVEL,
-    transports: [new transports.Console()],
+    transports: customTransports ?? new transports.Console(),
   });
 
   function formatLog({ message, origin, session }: LogEntry): string {
