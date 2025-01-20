@@ -1,7 +1,7 @@
 {
-  "name": "utils-aws",
+  "name": "aws",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/utils-aws/src",
+  "sourceRoot": "packages/aws/src",
   "projectType": "library",
   "release": {
     "version": {
@@ -17,10 +17,10 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/utils-aws",
-        "main": "packages/utils-aws/src/index.ts",
-        "tsConfig": "packages/utils-aws/tsconfig.lib.json",
-        "assets": ["packages/utils-aws/*.md"]
+        "outputPath": "dist/packages/aws",
+        "main": "packages/aws/src/index.ts",
+        "tsConfig": "packages/aws/tsconfig.lib.json",
+        "assets": ["packages/aws/*.md"]
       }
     },
     "nx-release-publish": {

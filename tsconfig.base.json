@@ -17,6 +17,8 @@
     "noPropertyAccessFromIndexSignature": true,
     "declaration": true,
     "types": ["node"],
+    "baseUrl": ".",
+    "rootDir": ".",
 
     /* Bundler mode */
     "moduleResolution": "bundler",
