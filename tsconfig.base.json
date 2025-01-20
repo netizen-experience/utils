@@ -3,13 +3,20 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.lib.tsbuildinfo",
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
+    "lib": ["ES2020"],
     "skipLibCheck": true,
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "composite": true,
     "pretty": true,
+
+    /* Utils options */
+    "importHelpers": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "declaration": true,
+    "types": ["node"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -17,7 +24,6 @@
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": false,
-    "jsx": "react-jsx",
     "esModuleInterop": true,
     "removeComments": false,
 
