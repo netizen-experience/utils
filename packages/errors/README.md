@@ -1,4 +1,4 @@
-# @netizen-experience/errors
+# Errors
 
 A utility library for creating and managing custom errors with additional context and codes.
 
