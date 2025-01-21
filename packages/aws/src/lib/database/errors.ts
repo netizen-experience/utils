@@ -1,4 +1,5 @@
-import { BaseError, Jsonable } from "@netizen-experience/types";
+import { BaseError } from "@netizen-experience/errors";
+import { Jsonable } from "../types";
 
 export enum DynamoErrorCode {
   GENERIC_ERROR,

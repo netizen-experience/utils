@@ -1,4 +1,4 @@
-import { Join, Stringable } from "@netizen-experience/types";
+import { Join, Stringable } from "../types";
 import { DynamoError } from "./errors";
 
 export function generatePrefixedKey<Prefixes extends Stringable[], Value extends Stringable>(
