@@ -47,10 +47,10 @@ Define DynamoDB tables with name, primary key, secondary search indexes (if any)
 ```typescript
 const table = defineTable(dynamo, {
   name: "SOME_TABLE_NAME",
-  primaryKey: { partitionKey: "partitionKey", sortKey: "sortKey" },
+  primaryKey: { partitionKey: "pk", sortKey: "sk" },
   secondaryIndex: {
     firstGSI: { partitionKey: "pk2", sortKey: "sk2" },
-    secondLSI: { partitionKey: "pk3", sortKey: "sk3" },
+    secondLSI: { partitionKey: "pk", sortKey: "sk3" },
   },
 });
 ```
