@@ -7,7 +7,7 @@ import {
 } from "./create-pre-signed-url";
 import { deleteObject, DeleteObjectParams } from "./delete";
 import { GetObjectParams, getObject } from "./get";
-import { headObject, HeadObjectParams } from "./head-object";
+import { headObject, HeadObjectParams } from "./head";
 import { UploadParams, upload } from "./upload";
 
 export function defineBucket(client: S3Client, bucket: string) {
