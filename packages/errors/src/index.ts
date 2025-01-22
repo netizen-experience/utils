@@ -1,21 +1,21 @@
-type Jsonable =
+export type ErrorContext =
   | string
   | number
   | boolean
   | null
   | undefined
-  | readonly Jsonable[]
-  | { readonly [key: string]: Jsonable }
-  | { toJSON(): Jsonable };
+  | readonly ErrorContext[]
+  | { readonly [key: string]: ErrorContext }
+  | { toJSON(): ErrorContext };
 
 export class BaseError extends Error {
-  public readonly context?: Jsonable;
+  public readonly context?: ErrorContext;
   public readonly code?: string | number;
   public readonly prefix?: string | undefined;
 
   constructor(
     message: string,
-    options: { prefix?: string; code?: string | number; context?: Jsonable; cause?: Error } = {},
+    options: { prefix?: string; code?: string | number; context?: ErrorContext; cause?: Error } = {},
   ) {
     const { code, context, prefix } = options;
     super(message);
