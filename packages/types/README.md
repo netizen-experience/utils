@@ -2,6 +2,11 @@
 
 The `types` library provides a collection of TypeScript utility types that can be used to enhance type safety and code readability in your projects.
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage and Examples](#usage-and-examples)
+
 ## Installation
 
 To install this package, run:
@@ -10,7 +15,7 @@ To install this package, run:
 npm install @netizen-experience/types
 ```
 
-## Usage
+## Usage and Examples
 
 To use the utility types in your project, import them from the `types` library:
 
