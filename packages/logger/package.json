@@ -1,9 +1,6 @@
 {
   "name": "@netizen-experience/logger",
   "version": "0.0.1",
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
   "peerDependencies": {
     "winston": "^3.17.0"
   },
