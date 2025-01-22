@@ -1,5 +1,4 @@
-import { BaseError } from "@netizen-experience/errors";
-import { Jsonable } from "../types";
+import { BaseError, ErrorContext } from "@netizen-experience/errors";
 
 export enum DynamoErrorCode {
   GENERIC_ERROR,
@@ -7,7 +6,7 @@ export enum DynamoErrorCode {
 }
 
 export class DynamoError extends BaseError {
-  constructor(message: string, options: { code?: DynamoErrorCode; context?: Jsonable; cause?: Error } = {}) {
+  constructor(message: string, options: { code?: DynamoErrorCode; context?: ErrorContext; cause?: Error } = {}) {
     super(`[Dynamo] ${message}`, options);
     Object.setPrototypeOf(this, new.target.prototype);
   }
