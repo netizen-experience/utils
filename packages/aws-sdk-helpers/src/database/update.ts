@@ -60,16 +60,16 @@ export async function update<
 >(params: UpdateParams<IndexNames, Table, Item, Schema>) {
   const { partitionKey, sortKey } = params.table.primaryKey;
   if (params.attributes[partitionKey] === undefined)
-    throw new DynamoError("Partition key is required for update operation", { context: { partitionKey } });
+    throw new DynamoError("Partition key is required for update operation");
 
   if (sortKey && params.attributes[sortKey] === undefined)
-    throw new DynamoError("Sort key is required for update operation", { context: { partitionKey, sortKey } });
+    throw new DynamoError("Sort key is required for update operation");
 
   const parsedKey = params.schema.partial().safeParse({
     [partitionKey]: params.attributes[partitionKey],
     ...(sortKey && { [sortKey]: params.attributes[sortKey] }),
   });
-  if (!parsedKey.success) throw new DynamoError("Key does not match schema", { cause: parsedKey.error });
+  if (!parsedKey.success) throw new DynamoError("Key does not match schema");
 
   const parsedAttributes = params.schema.partial().safeParse(
     Object.entries(params.attributes).reduce<BaseItem>((acc, [key, value]) => {
@@ -77,8 +77,7 @@ export async function update<
       return acc;
     }, {}),
   );
-  if (!parsedAttributes.success)
-    throw new DynamoError("Attributes does not match schema", { cause: parsedAttributes.error });
+  if (!parsedAttributes.success) throw new DynamoError("Attributes does not match schema");
 
   const expression = generateUpdateExpression(parsedAttributes.data);
 
@@ -93,9 +92,7 @@ export async function update<
     );
 
     return parsedAttributes.data;
-  } catch (e) {
-    throw new DynamoError("Failed to perform update command", {
-      ...(e instanceof Error && { cause: e }),
-    });
+  } catch {
+    throw new DynamoError("Failed to perform update command");
   }
 }

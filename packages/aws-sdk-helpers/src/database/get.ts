@@ -22,13 +22,9 @@ export async function get<
   Schema extends z.ZodType<Item>,
 >(params: GetParams<IndexNames, Table, Item, Schema>) {
   if (params.key[params.table.primaryKey.partitionKey] === undefined)
-    throw new DynamoError("Partition key is required for get operation", {
-      context: { partitionKey: params.table.primaryKey.partitionKey },
-    });
+    throw new DynamoError("Partition key is required for get operation");
   if (params.table.primaryKey.sortKey && params.key[params.table.primaryKey.sortKey] === undefined)
-    throw new DynamoError("Sort key is required for get operation", {
-      context: { sortKey: params.table.primaryKey.sortKey },
-    });
+    throw new DynamoError("Sort key is required for get operation");
 
   try {
     const { Item: item } = await params.client.send(
@@ -41,15 +37,10 @@ export async function get<
     if (item === undefined) return undefined;
 
     const parsedItem = params.schema.safeParse(item);
-    if (!parsedItem.success)
-      throw new DynamoError("Query result does not match schema", {
-        cause: parsedItem.error,
-      });
+    if (!parsedItem.success) throw new DynamoError("Query result does not match schema");
 
     return parsedItem.data as z.output<Schema>;
-  } catch (e) {
-    throw new DynamoError("Failed to perform get command", {
-      ...(e instanceof Error && { cause: e }),
-    });
+  } catch {
+    throw new DynamoError("Failed to perform get command");
   }
 }

@@ -22,14 +22,12 @@ export async function create<
   Schema extends z.ZodType<Item>,
 >(params: CreateParams<IndexNames, Table, Item, Schema>) {
   const parsedItem = params.schema.safeParse(params.item);
-  if (!parsedItem.success) throw new DynamoError("Item does not match schema", { cause: parsedItem.error });
+  if (!parsedItem.success) throw new DynamoError("Item does not match schema");
 
   try {
     await params.client.send(new PutCommand({ TableName: params.table.name, Item: parsedItem.data }));
     return parsedItem.data;
-  } catch (e) {
-    throw new DynamoError("Failed to perform put command", {
-      ...(e instanceof Error && { cause: e }),
-    });
+  } catch {
+    throw new DynamoError("Failed to perform put command");
   }
 }

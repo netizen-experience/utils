@@ -13,15 +13,12 @@ function generateQueryExpression<IndexNames extends string, Item extends BaseIte
   let { partitionKey, sortKey } = params.table.primaryKey;
   if (params.indexName !== undefined) {
     const secondaryIndex = params.table.secondaryIndex[params.indexName];
-    if (!secondaryIndex)
-      throw new DynamoError("Secondary index not found", { context: { indexName: params.indexName } });
+    if (!secondaryIndex) throw new DynamoError("Secondary index not found");
     ({ partitionKey, sortKey } = secondaryIndex);
   }
 
   if (params.attributes[partitionKey] === undefined)
-    throw new DynamoError("Partition key is required for query operation", {
-      context: { partitionKey, ...(params.indexName && { indexName: params.indexName }) },
-    });
+    throw new DynamoError("Partition key is required for query operation");
 
   const names: Record<string, string> = {
     [`#${partitionKey}`]: partitionKey,
@@ -99,30 +96,13 @@ export async function query<
   try {
     const result = await params.client.send(new QueryCommand(command));
     const parsedResult = params.schema.array().safeParse(result.Items ?? []);
-    if (!parsedResult.success)
-      throw new DynamoError("Query result does not match schema", {
-        cause: parsedResult.error,
-        context: {
-          tableName: params.table.name,
-          indexName: params.indexName,
-          attributes: params.attributes,
-        },
-      });
+    if (!parsedResult.success) throw new DynamoError("Query result does not match schema");
     return {
       data: parsedResult.data,
       ...(result.LastEvaluatedKey && { lastEvaluatedKey: result.LastEvaluatedKey }),
     };
-  } catch (e) {
-    throw new DynamoError("Failed to perform query command", {
-      ...(e instanceof Error && {
-        cause: e,
-        context: {
-          tableName: params.table.name,
-          indexName: params.indexName,
-          attributes: params.attributes,
-        },
-      }),
-    });
+  } catch {
+    throw new DynamoError("Failed to perform query command");
   }
 }
 
@@ -135,14 +115,11 @@ export async function queryByPrefix<
   let { partitionKey, sortKey } = params.table.primaryKey;
   if (params.indexName !== undefined) {
     const secondaryIndex = params.table.secondaryIndex[params.indexName];
-    if (!secondaryIndex)
-      throw new DynamoError("Secondary index not found", { context: { indexName: params.indexName } });
+    if (!secondaryIndex) throw new DynamoError("Secondary index not found");
     ({ partitionKey, sortKey } = secondaryIndex);
   }
   if (sortKey === undefined)
-    throw new DynamoError("`queryByPrefix` operation can only be performed on indexes with sort key", {
-      context: { attributes: params.attributes },
-    });
+    throw new DynamoError("`queryByPrefix` operation can only be performed on indexes with sort key");
 
   return query({
     ...params,

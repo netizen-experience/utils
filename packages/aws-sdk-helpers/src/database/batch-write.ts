@@ -45,19 +45,14 @@ export async function batchWrite<IndexNames extends string, Table extends TableD
                 if (request.type === "delete") {
                   const { partitionKey, sortKey } = params.table.primaryKey;
                   if (request.key[partitionKey] === undefined)
-                    throw new DynamoError("Partition key is required for a delete request in batch write operation", {
-                      context: { partitionKey },
-                    });
+                    throw new DynamoError("Partition key is required for a delete request in batch write operation");
                   if (sortKey && request.key[sortKey] === undefined)
-                    throw new DynamoError("Sort key is required for a delete request in batch write operation", {
-                      context: { partitionKey, sortKey },
-                    });
+                    throw new DynamoError("Sort key is required for a delete request in batch write operation");
 
                   return { DeleteRequest: { Key: request.key } };
                 } else {
                   const parsedItem = request.schema.safeParse(request.data);
-                  if (!parsedItem.success)
-                    throw new DynamoError("Item does not match schema", { cause: parsedItem.error });
+                  if (!parsedItem.success) throw new DynamoError("Item does not match schema");
 
                   return { PutRequest: { Item: parsedItem.data } };
                 }
