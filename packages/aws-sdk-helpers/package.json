@@ -1,5 +1,5 @@
 {
-  "name": "@netizen-experience/aws",
+  "name": "@netizen-experience/aws-sdk-helpers",
   "version": "0.0.1",
   "peerDependencies": {
     "@aws-sdk/client-dynamodb": ">=3.730.0",

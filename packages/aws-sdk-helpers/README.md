@@ -1,4 +1,4 @@
-# utils-aws
+# AWS SDK Helpers
 
 This library provides helper functions to interact with AWS S3 and DynamoDB, making it easier to perform common operations in S3 and DynamoDB.
 
