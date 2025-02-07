@@ -39,29 +39,23 @@ export type RequiredBy<T, K extends keyof T> = Partial<Omit<T, K>> & Required<Pi
 export type NonEmptyArray<T> = [T, ...T[]];
 
 /**
- * Omits properties from a type while preserving discriminated unions
+ * This type works similarly to conventional TypeScript's `Omit` utility type, but it preserves the discriminated union properties.
  * @example
- * interface User {
- *   name: string;
- *   age: number;
- *   email: string;
- * }
- * type OmittedUser = OmitImproved<User, 'email'>;
- * // Equivalent to: { name: string; age: number }
+ * type A = { type: "add"; user: string; id: number } | { type: "remove"; user: string; id: number };
+ * type OmittedA = OmitImproved<A, "user" | "id">;
+ * // Equivalent to: { type: "add"; user: "string" } | { type: "remove"; user: string }
+ * // Omit<A, "user" | "id"> would return { type: "add" | "remove"; user: string }
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type OmitImproved<T, K extends keyof T> = { [P in keyof T as Exclude<P, K & keyof any>]: T[P] };
 
 /**
- * Pick properties from a type while preserving discriminated unions
+ * This type works similarly to conventional TypeScript's `Pick` utility type, but it preserves the discriminated union properties.
  * @example
- * interface User {
- *   name: string;
- *   age: number;
- *   email: string;
- * }
- * type PickedUser = PickImproved<User, 'name' | 'email'>;
- * // Equivalent to: { name: string; email: string }
+ * type A = { type: "add"; user: string; id: number } | { type: "remove"; user: string; id: number };
+ * type PickedA = PickImproved<A, "type" | "d">;
+ * // Equivalent to: { type: "add"; id: number } | { type: "remove"; id: number }
+ * // Pick<A, "type" | "d"> would return { type: "add" | "remove"; id: number }
  */
 export type PickImproved<T, K extends keyof T> = {
   [P in keyof T as K & P]: T[P];
