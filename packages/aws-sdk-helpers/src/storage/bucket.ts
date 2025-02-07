@@ -4,7 +4,7 @@ import {
   CreatePreSignedUrlParams,
   createPreSignedUrl,
   createUploadUrl,
-} from "./create-pre-signed-url";
+} from "./signed-url";
 import { deleteObject, DeleteObjectParams } from "./delete";
 import { GetObjectParams, getObject } from "./get";
 import { headObject, HeadObjectParams } from "./head";
