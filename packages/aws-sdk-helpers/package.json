@@ -1,14 +1,14 @@
 {
   "name": "@netizen-experience/aws-sdk-helpers",
   "version": "0.0.1",
+  "type": "module",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
   "peerDependencies": {
     "@aws-sdk/client-dynamodb": ">=3.730.0",
     "@aws-sdk/client-s3": ">=3.730.0",
     "@aws-sdk/lib-dynamodb": ">=3.730.0",
-    "@aws-sdk/s3-request-presigner": "^3.730.0",
+    "@aws-sdk/s3-request-presigner": ">=3.730.0",
     "zod": ">=3.2"
-  },
-  "type": "module",
-  "main": "./src/index.js",
-  "typings": "./src/index.d.ts"
+  }
 }
