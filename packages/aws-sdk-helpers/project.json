@@ -1,0 +1,32 @@
+{
+  "name": "aws-sdk-helpers",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/aws-sdk-helpers/src",
+  "projectType": "library",
+  "release": {
+    "version": {
+      "generatorOptions": {
+        "packageRoot": "dist/{projectRoot}",
+        "currentVersionResolver": "git-tag"
+      }
+    }
+  },
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/aws-sdk-helpers",
+        "main": "packages/aws-sdk-helpers/src/index.ts",
+        "tsConfig": "packages/aws-sdk-helpers/tsconfig.lib.json",
+        "assets": ["packages/aws-sdk-helpers/*.md"]
+      }
+    },
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
+    }
+  }
+}
