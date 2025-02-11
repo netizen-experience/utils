@@ -1,7 +1,7 @@
 import { DynamoDBDocumentClient, QueryCommand } from "@aws-sdk/lib-dynamodb";
 import { NativeAttributeValue } from "@aws-sdk/util-dynamodb";
 import { z } from "zod";
-import { PartialRecord } from "@netizen-experience/types";
+import { PartialRecord } from "@netizen-experience/utility-types";
 import { DynamoError } from "./errors";
 import type { BaseItem, TableDef } from "./types";
 

@@ -16,7 +16,7 @@
       "path": "./packages/logger"
     },
     {
-      "path": "./packages/types"
+      "path": "./packages/utility-types"
     }
   ]
 }

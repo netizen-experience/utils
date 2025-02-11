@@ -1,5 +1,5 @@
 {
-  "name": "@netizen-experience/types",
+  "name": "@netizen-experience/utility-types",
   "version": "0.0.1",
   "type": "module",
   "exports": {

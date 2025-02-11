@@ -34,7 +34,7 @@
       "@netizen-experience/aws-sdk-helpers": ["packages/aws-sdk-helpers/src/index.ts"],
       "@netizen-experience/error-utils": ["packages/error-utils/src/index.ts"],
       "@netizen-experience/logger": ["packages/logger/src/index.ts"],
-      "@netizen-experience/types": ["dist/packages/types/src/index.ts"]
+      "@netizen-experience/utility-types": ["packages/utility-types/src/index.ts"]
     }
   }
 }
