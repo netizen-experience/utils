@@ -8,6 +8,7 @@
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "composite": true,
+    "rootDir": ".",
     "pretty": true,
 
     /* Utils options */
@@ -17,8 +18,6 @@
     "noPropertyAccessFromIndexSignature": true,
     "declaration": true,
     "types": ["node"],
-    "baseUrl": ".",
-    "rootDir": ".",
 
     /* Bundler mode */
     "module": "ES2020",
@@ -37,6 +36,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "forceConsistentCasingInFileNames": true,
+
+    /* Path aliases */
+    "baseUrl": ".",
     "paths": {
       "@netizen-experience/aws-sdk-helpers": ["packages/aws-sdk-helpers/src/index.ts"],
       "@netizen-experience/errors": ["packages/errors/src/index.ts"],
