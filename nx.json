@@ -14,7 +14,9 @@
         },
         "build": {
           "targetName": "build",
-          "configName": "tsconfig.lib.json"
+          "configName": "tsconfig.lib.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps"
         }
       }
     },
@@ -26,13 +28,7 @@
     }
   ],
   "defaultBase": "main",
-  "targetDefaults": {
-    "@nx/js:tsc": {
-      "cache": false,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    }
-  },
+  "targetDefaults": {},
   "release": {
     "version": {
       "preVersionCommand": "npx nx run-many -t build"
