@@ -5,5 +5,18 @@
   },
   "compileOnSave": false,
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./packages/aws-sdk-helpers"
+    },
+    {
+      "path": "./packages/errors"
+    },
+    {
+      "path": "./packages/logger"
+    },
+    {
+      "path": "./packages/types"
+    }
+  ]
 }
