@@ -10,7 +10,7 @@
       "path": "../types"
     },
     {
-      "path": "../errors"
+      "path": "../error-utils"
     },
     {
       "path": "./tsconfig.lib.json"

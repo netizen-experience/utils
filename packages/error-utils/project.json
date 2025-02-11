@@ -1,0 +1,9 @@
+{
+  "name": "error-utils",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/error-utils/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project error-utils --web",
+  "targets": {}
+}

@@ -1,5 +1,5 @@
 {
-  "name": "@netizen-experience/errors",
+  "name": "@netizen-experience/error-utils",
   "version": "0.0.1",
   "type": "module",
   "exports": {

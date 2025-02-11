@@ -1,6 +1,6 @@
-# Errors
+# Error Utils
 
-A utility library for creating and managing custom errors with additional context and codes.
+A utility library for creating and managing custom error-utils with additional context and codes.
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ A utility library for creating and managing custom errors with additional contex
 To install this package, run:
 
 ```sh
-npm install @netizen-experience/errors
+npm install @netizen-experience/error-utils
 ```
 
 ## Usage and Examples
@@ -25,7 +25,7 @@ npm install @netizen-experience/errors
 You can create a custom error by extending the `BaseError` class:
 
 ```typescript
-import { BaseError, ErrorContext } from "@netizen-experience/errors";
+import { BaseError, ErrorContext } from "@netizen-experience/error-utils";
 
 class CustomError extends BaseError {
   constructor(
@@ -57,7 +57,7 @@ console.log(error.codedError()); // 'ERR 123'
 The `ErrorContext` type defines the structure that is convertible to JSON format that can be passed to the error. This allows you to add additional information to the error, making it easier to debug and handle.
 
 ```typescript
-import { ErrorContext } from "@netizen-experience/errors";
+import { ErrorContext } from "@netizen-experience/error-utils";
 
 // Adding user information to the error context
 const userContext: ErrorContext = {

@@ -11,7 +11,7 @@
       "path": "../types/tsconfig.lib.json"
     },
     {
-      "path": "../errors/tsconfig.lib.json"
+      "path": "../error-utils/tsconfig.lib.json"
     }
   ]
 }

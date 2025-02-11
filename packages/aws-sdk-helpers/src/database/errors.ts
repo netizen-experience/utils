@@ -1,4 +1,4 @@
-import { BaseError, ErrorContext } from "@netizen-experience/errors";
+import { BaseError, ErrorContext } from "@netizen-experience/error-utils";
 
 export enum DynamoErrorCode {
   GENERIC_ERROR,

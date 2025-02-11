@@ -10,7 +10,7 @@
       "path": "./packages/aws-sdk-helpers"
     },
     {
-      "path": "./packages/errors"
+      "path": "./packages/error-utils"
     },
     {
       "path": "./packages/logger"
