@@ -4,6 +4,5 @@
   "sourceRoot": "packages/utility-types/src",
   "projectType": "library",
   "tags": [],
-  "// targets": "to see all targets run: nx show project utility-types --web",
   "targets": {}
 }
