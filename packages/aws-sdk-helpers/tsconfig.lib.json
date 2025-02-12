@@ -2,7 +2,16 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "../../dist/out-tsc"
+    "outDir": "dist",
+    "rootDir": "src"
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "references": [
+    {
+      "path": "../utility-types/tsconfig.lib.json"
+    },
+    {
+      "path": "../error-utils/tsconfig.lib.json"
+    }
+  ]
 }

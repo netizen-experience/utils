@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.lib.tsbuildinfo",
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020"],
@@ -8,19 +7,14 @@
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "composite": true,
+    "rootDir": ".",
     "pretty": true,
-
-    /* Utils options */
     "importHelpers": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
     "declaration": true,
     "types": ["node"],
-    "baseUrl": ".",
-    "rootDir": ".",
-
-    /* Bundler mode */
     "module": "ES2020",
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": false,
@@ -29,19 +23,18 @@
     "noEmit": false,
     "esModuleInterop": true,
     "removeComments": false,
-
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
     "paths": {
       "@netizen-experience/aws-sdk-helpers": ["packages/aws-sdk-helpers/src/index.ts"],
-      "@netizen-experience/errors": ["packages/errors/src/index.ts"],
+      "@netizen-experience/error-utils": ["packages/error-utils/src/index.ts"],
       "@netizen-experience/logger": ["packages/logger/src/index.ts"],
-      "@netizen-experience/types": ["dist/packages/types/src/index.ts"]
+      "@netizen-experience/utility-types": ["packages/utility-types/src/index.ts"]
     }
   }
 }

@@ -1,11 +1,17 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "tsBuildInfoFile": "../../node_modules/.tmp/tsconfig.aws-sdk-helpers.tsbuildinfo"
+    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
   "files": [],
   "include": [],
   "references": [
+    {
+      "path": "../utility-types"
+    },
+    {
+      "path": "../error-utils"
+    },
     {
       "path": "./tsconfig.lib.json"
     }

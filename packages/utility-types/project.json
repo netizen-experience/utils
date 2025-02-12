@@ -1,7 +1,7 @@
 {
-  "name": "aws-sdk-helpers",
+  "name": "utility-types",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/aws-sdk-helpers/src",
+  "sourceRoot": "packages/utility-types/src",
   "projectType": "library",
   "tags": [],
   "targets": {}

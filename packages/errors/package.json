@@ -1,7 +1,0 @@
-{
-  "name": "@netizen-experience/errors",
-  "version": "0.0.1",
-  "type": "module",
-  "main": "./src/index.js",
-  "typings": "./src/index.d.ts"
-}

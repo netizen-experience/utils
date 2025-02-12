@@ -14,7 +14,9 @@
         },
         "build": {
           "targetName": "build",
-          "configName": "tsconfig.lib.json"
+          "configName": "tsconfig.lib.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps"
         }
       }
     },
@@ -26,15 +28,15 @@
     }
   ],
   "defaultBase": "main",
-  "targetDefaults": {
-    "@nx/js:tsc": {
-      "cache": false,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    }
-  },
+  "targetDefaults": {},
   "release": {
+    "projects": ["packages/*"],
+    "releaseTagPattern": "v{version}",
+    "git": {
+      "commitMessage": "chore(release): {version}"
+    },
     "version": {
+      "conventionalCommits": true,
       "preVersionCommand": "npx nx run-many -t build"
     }
   }
