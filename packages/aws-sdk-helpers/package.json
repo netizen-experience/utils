@@ -1,6 +1,6 @@
 {
   "name": "@netizen-experience/aws-sdk-helpers",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "type": "module",
   "exports": {
     ".": {
@@ -14,8 +14,8 @@
   "types": "./dist/index.d.ts",
   "module": "./dist/index.js",
   "dependencies": {
-    "@netizen-experience/error-utils": "^0.0.1",
-    "@netizen-experience/utility-types": "^0.0.1"
+    "@netizen-experience/error-utils": "^0.1.1",
+    "@netizen-experience/utility-types": "^0.1.1"
   },
   "peerDependencies": {
     "@aws-sdk/client-dynamodb": ">=3.730.0",
